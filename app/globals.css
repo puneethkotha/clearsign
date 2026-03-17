@@ -89,6 +89,24 @@ body {
   cursor: not-allowed;
 }
 
+.mission-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  min-height: calc(100vh - 103px);
+}
+
+@media (max-width: 1024px) {
+  .mission-layout {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 .risk-LOW {
   color: var(--success);
   background: rgba(74, 222, 128, 0.08);
@@ -111,4 +129,28 @@ body {
   color: var(--danger);
   background: rgba(248, 113, 113, 0.08);
   border-color: rgba(248, 113, 113, 0.3);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  body {
+    font-size: 13px;
+  }
+
+  .label {
+    font-size: 9px;
+  }
+
+  header {
+    padding: 0 16px !important;
+    height: 56px !important;
+  }
+
+  nav {
+    padding: 0 16px !important;
+  }
+
+  .mission-layout > div {
+    padding: 16px !important;
+  }
 }

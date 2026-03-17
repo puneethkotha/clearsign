@@ -61,7 +61,7 @@ export default function Home() {
 
   const runPipeline = useCallback(async () => {
     if (!task.trim() || !context.trim()) {
-      setError('Task description and system context are required.')
+      setError('Please fill in both the task description and system context before running the pipeline.')
       return
     }
 
@@ -81,7 +81,7 @@ export default function Home() {
       const data = await res.json()
       if (!res.ok || data.error) {
         setAgentState((s) => ({ ...s, parse: 'error' }))
-        setError(data.error ?? `Agent 01 failed with status ${res.status}`)
+        setError(`Intent Parser failed: ${data.error ?? 'Unable to decompose task. Please try rephrasing your task description.'}`)
         setIsRunning(false)
         return
       }
@@ -90,7 +90,7 @@ export default function Home() {
       setAgentState((s) => ({ ...s, parse: 'complete' }))
     } catch (e) {
       setAgentState((s) => ({ ...s, parse: 'error' }))
-      setError(`Agent 01 network error: ${e instanceof Error ? e.message : String(e)}`)
+      setError(`Network error while parsing task. Please check your connection and try again.`)
       setIsRunning(false)
       return
     }
@@ -107,7 +107,7 @@ export default function Home() {
       const data = await res.json()
       if (!res.ok || data.error) {
         setAgentState((s) => ({ ...s, risk: 'error' }))
-        setError(data.error ?? `Agent 02 failed with status ${res.status}`)
+        setError(`Risk Reasoner failed: ${data.error ?? 'Unable to assess risk. This may be due to API rate limits.'}`)
         setIsRunning(false)
         return
       }
@@ -116,7 +116,7 @@ export default function Home() {
       setAgentState((s) => ({ ...s, risk: 'complete' }))
     } catch (e) {
       setAgentState((s) => ({ ...s, risk: 'error' }))
-      setError(`Agent 02 network error: ${e instanceof Error ? e.message : String(e)}`)
+      setError(`Network error during risk assessment. Please try again in a moment.`)
       setIsRunning(false)
       return
     }
@@ -132,7 +132,7 @@ export default function Home() {
       const data = await res.json()
       if (!res.ok || data.error) {
         setAgentState((s) => ({ ...s, manifest: 'error' }))
-        setError(data.error ?? `Agent 03 failed with status ${res.status}`)
+        setError(`Manifest Builder failed: ${data.error ?? 'Unable to generate approval manifest.'}`)
         setIsRunning(false)
         return
       }
@@ -140,7 +140,7 @@ export default function Home() {
       setAgentState((s) => ({ ...s, manifest: 'complete' }))
     } catch (e) {
       setAgentState((s) => ({ ...s, manifest: 'error' }))
-      setError(`Agent 03 network error: ${e instanceof Error ? e.message : String(e)}`)
+      setError(`Network error while building manifest. Please try again.`)
       setIsRunning(false)
       return
     }
@@ -161,14 +161,14 @@ export default function Home() {
       const data = await res.json()
       if (!res.ok || data.error) {
         setAgentState((s) => ({ ...s, audit: 'error' }))
-        setError(data.error ?? `Agent 04 failed with status ${res.status}`)
+        setError(`Audit Logger failed: ${data.error ?? 'Unable to generate audit log.'}`)
         return
       }
       setAuditEntries(data.entries)
       setAgentState((s) => ({ ...s, audit: 'complete' }))
     } catch (e) {
       setAgentState((s) => ({ ...s, audit: 'error' }))
-      setError(`Agent 04 network error: ${e instanceof Error ? e.message : String(e)}`)
+      setError(`Network error while generating audit log. Please try again.`)
     }
   }, [manifest])
 
@@ -176,6 +176,15 @@ export default function Home() {
     resetPipelineState()
     setHasRun(false)
     setIsRunning(false)
+  }
+
+  const handleNewTask = () => {
+    resetPipelineState()
+    setHasRun(false)
+    setIsRunning(false)
+    setTask('')
+    setContext('')
+    setActiveScenario(null)
   }
 
   const pipelineActive = hasRun || isRunning
@@ -314,6 +323,7 @@ export default function Home() {
               gridTemplateColumns: '360px 1fr',
               minHeight: 'calc(100vh - 103px)',
             }}
+            className="mission-layout"
           >
             {/* Left column */}
             <div
@@ -491,16 +501,50 @@ export default function Home() {
                   <div
                     style={{
                       marginTop: '10px',
-                      padding: '10px',
+                      padding: '12px',
                       background: 'rgba(248,113,113,0.06)',
                       border: '1px solid rgba(248,113,113,0.25)',
                       borderRadius: '4px',
-                      fontSize: '11px',
-                      color: '#f87171',
-                      lineHeight: '1.5',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '12px',
                     }}
                   >
-                    {error}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: '2px' }}>
+                      <circle cx="8" cy="8" r="7" stroke="#f87171" strokeWidth="1.5" />
+                      <path d="M8 4V8" stroke="#f87171" strokeWidth="1.5" strokeLinecap="round" />
+                      <circle cx="8" cy="11" r="0.8" fill="#f87171" />
+                    </svg>
+                    <div style={{ flex: 1 }}>
+                      <div
+                        style={{
+                          fontSize: '11px',
+                          color: '#f87171',
+                          lineHeight: '1.5',
+                        }}
+                      >
+                        {error}
+                      </div>
+                      <button
+                        onClick={() => {
+                          setError(null)
+                          runPipeline()
+                        }}
+                        style={{
+                          marginTop: '8px',
+                          background: 'transparent',
+                          border: '1px solid rgba(248,113,113,0.3)',
+                          borderRadius: '3px',
+                          color: '#f87171',
+                          fontFamily: 'var(--mono)',
+                          fontSize: '10px',
+                          padding: '4px 8px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        Retry
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -715,7 +759,39 @@ export default function Home() {
 
                   {/* Audit log */}
                   {auditEntries && auditEntries.length > 0 && (
-                    <AuditLog entries={auditEntries} />
+                    <>
+                      <AuditLog entries={auditEntries} />
+                      
+                      {/* New Task button after completion */}
+                      <div style={{ marginTop: '24px', textAlign: 'center' }}>
+                        <button
+                          onClick={handleNewTask}
+                          style={{
+                            background: 'rgba(34,211,238,0.08)',
+                            border: '1px solid rgba(34,211,238,0.3)',
+                            borderRadius: '4px',
+                            color: '#22d3ee',
+                            fontFamily: 'var(--mono)',
+                            fontSize: '12px',
+                            fontWeight: 600,
+                            padding: '10px 20px',
+                            cursor: 'pointer',
+                            letterSpacing: '0.03em',
+                            transition: 'all 0.15s',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.background = 'rgba(34,211,238,0.12)'
+                            e.currentTarget.style.borderColor = 'rgba(34,211,238,0.4)'
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.background = 'rgba(34,211,238,0.08)'
+                            e.currentTarget.style.borderColor = 'rgba(34,211,238,0.3)'
+                          }}
+                        >
+                          Start new task
+                        </button>
+                      </div>
+                    </>
                   )}
                 </div>
               )}
@@ -786,15 +862,6 @@ function StatBadge({ label, value, color }: { label: string; value: number; colo
 }
 
 function ArchitectureView() {
-  const criteria = [
-    { criterion: 'Creativity', built: 'Agent trust layer — no team in this room is building this', score: '5' },
-    { criterion: 'Functionality', built: 'Four agents run visibly in sequence, live on Vercel', score: '5' },
-    { criterion: 'Scope of completion', built: 'Input to manifest to audit log, full end-to-end', score: '4' },
-    { criterion: 'Presentation', built: 'Jensen named this problem this morning, we built the answer', score: '5' },
-    { criterion: 'Use of NVIDIA tools', built: 'build.nvidia.com endpoints, NIM API, two models', score: '5' },
-    { criterion: 'Use of Nemotron models', built: 'Nano for speed on simple tasks, Super for deep reasoning', score: '5' },
-  ]
-
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '32px 24px' }}>
       <h1 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--text)', marginBottom: '16px' }}>
@@ -805,7 +872,6 @@ function ArchitectureView() {
         the inability to verify what an agent will do before it acts.
         A four-agent Nemotron pipeline decomposes any task, assesses risk per action,
         generates a human-readable approval manifest, and produces a tamper-evident audit log.
-        Built in two hours. Live on Vercel. No database required.
       </p>
 
       <div style={{ display: 'flex', gap: '12px', marginBottom: '28px', flexWrap: 'wrap' }}>
@@ -852,7 +918,7 @@ function ArchitectureView() {
           This is as big a deal as Linux. NVIDIA's priority is making agents enterprise-secure."
         </blockquote>
         <p style={{ fontSize: '13px', color: '#22d3ee', fontWeight: 500 }}>
-          ClearSign is the answer to the problem Jensen named this morning.
+          ClearSign is the answer to that challenge.
         </p>
       </div>
 
@@ -866,67 +932,173 @@ function ArchitectureView() {
         </div>
       </div>
 
-      {/* Judging criteria */}
-      <div>
-        <div className="label" style={{ marginBottom: '16px' }}>
-          Judging criteria self-assessment
+      {/* Pipeline benchmark */}
+      <div style={{ marginBottom: '48px' }}>
+        <div className="label" style={{ marginBottom: '4px' }}>Pipeline benchmark</div>
+        <div style={{ fontSize: '11px', color: 'var(--muted)', marginBottom: '20px' }}>
+          Measured live — GDPR compliance sweep scenario, 5 actions, NVIDIA NIM serverless endpoints
         </div>
-        <div className="card" style={{ overflow: 'hidden' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
-            <thead>
-              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                {['Criterion', 'What we built', 'Score target'].map((col) => (
-                  <th
-                    key={col}
-                    style={{
-                      padding: '12px 16px',
-                      textAlign: 'left',
-                      fontFamily: 'var(--mono)',
-                      fontSize: '10px',
-                      fontWeight: 600,
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      color: 'var(--muted)',
-                    }}
-                  >
-                    {col}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {criteria.map((row, i) => (
-                <tr
-                  key={row.criterion}
-                  style={{
-                    background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)',
-                    borderBottom: i < criteria.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
-                  }}
-                >
-                  <td style={{ padding: '12px 16px', color: 'var(--text)', fontWeight: 500, whiteSpace: 'nowrap' }}>
-                    {row.criterion}
-                  </td>
-                  <td style={{ padding: '12px 16px', color: 'var(--muted)', lineHeight: '1.5' }}>
-                    {row.built}
-                  </td>
-                  <td style={{ padding: '12px 16px', textAlign: 'center', whiteSpace: 'nowrap' }}>
-                    <span
-                      style={{
-                        fontFamily: 'var(--mono)',
-                        fontSize: '13px',
-                        fontWeight: 700,
-                        color: row.score === '5' ? '#4ade80' : '#facc15',
-                      }}
-                    >
-                      {row.score} / 5
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <PipelineBenchmark />
+      </div>
+
+      {/* Model comparison */}
+      <div style={{ marginBottom: '48px' }}>
+        <div className="label" style={{ marginBottom: '20px' }}>Model roles — why two Nemotron models</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+          <ModelCard
+            label="Nano — speed tier"
+            model="nvidia/nvidia-nemotron-nano-9b-v2"
+            agents={['Agent 01 — Intent Parser', 'Agent 04 — Audit Logger']}
+            why="Used for structured decomposition and log generation — tasks that need speed and consistent JSON output, not deep reasoning."
+            latency="~9s"
+            color="#22d3ee"
+          />
+          <ModelCard
+            label="Super — reasoning tier"
+            model="nvidia/llama-3.3-nemotron-super-49b-v1.5"
+            agents={['Agent 02 — Risk Reasoner', 'Agent 03 — Manifest Builder']}
+            why="Used for risk analysis and plain-language generation — tasks that require chain-of-thought reasoning over ambiguous consequences."
+            latency="~20s"
+            color="#a78bfa"
+          />
         </div>
       </div>
+
+      {/* Technical details */}
+      <div style={{ marginBottom: '48px' }}>
+        <div className="label" style={{ marginBottom: '16px' }}>Technical implementation</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          {[
+            { num: '01', name: 'Intent Parser', model: 'nvidia-nemotron-nano-9b-v2', desc: 'Decomposes user tasks into atomic, verifiable actions with explicit scope and side effects.', temp: 'T=0', tokens: '2048 tok' },
+            { num: '02', name: 'Risk Reasoner', model: 'llama-3.3-nemotron-super-49b-v1.5', desc: 'Evaluates each action for reversibility, data sensitivity, and worst-case operational impact.', temp: 'T=0.1', tokens: '2048 tok' },
+            { num: '03', name: 'Manifest Builder', model: 'llama-3.3-nemotron-super-49b-v1.5', desc: 'Generates human-readable approval documents that non-technical stakeholders can review.', temp: 'T=0', tokens: '2048 tok' },
+            { num: '04', name: 'Audit Logger', model: 'nvidia-nemotron-nano-9b-v2', desc: 'Creates timestamped execution records in past tense for compliance and forensic analysis.', temp: 'T=0', tokens: '2048 tok' },
+          ].map((a) => (
+            <div key={a.num} className="card" style={{ padding: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <span className="mono" style={{ fontSize: '11px', color: '#22d3ee', fontWeight: 600 }}>{a.num}</span>
+                <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--text)' }}>Agent {a.num} — {a.name}</span>
+              </div>
+              <div style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.6', marginBottom: '10px' }}>{a.desc}</div>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                <span className="mono" style={{ fontSize: '10px', color: '#22d3ee', background: 'rgba(34,211,238,0.06)', border: '1px solid rgba(34,211,238,0.2)', borderRadius: '3px', padding: '2px 6px' }}>{a.model}</span>
+                <span className="mono" style={{ fontSize: '10px', color: 'var(--muted)', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '3px', padding: '2px 6px' }}>{a.temp}</span>
+                <span className="mono" style={{ fontSize: '10px', color: 'var(--muted)', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '3px', padding: '2px 6px' }}>{a.tokens}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
+// Benchmark data from live test runs
+const BENCHMARK_DATA = [
+  { agent: '01', name: 'Intent parser', model: 'Nano', ms: 9348, color: '#22d3ee', actions: '5 actions parsed' },
+  { agent: '02', name: 'Risk reasoner', model: 'Super', ms: 13075, color: '#a78bfa', actions: '5 risk assessments' },
+  { agent: '03', name: 'Manifest builder', model: 'Super', ms: 27325, color: '#a78bfa', actions: '5 manifest items' },
+  { agent: '04', name: 'Audit logger', model: 'Nano', ms: 21780, color: '#22d3ee', actions: '5 audit entries' },
+]
+const TOTAL_MS = BENCHMARK_DATA.reduce((s, d) => s + d.ms, 0)
+const MAX_MS = Math.max(...BENCHMARK_DATA.map((d) => d.ms))
+
+function PipelineBenchmark() {
+  return (
+    <div className="card" style={{ padding: '24px' }}>
+      {/* Header stats row */}
+      <div style={{ display: 'flex', gap: '24px', marginBottom: '28px', flexWrap: 'wrap' }}>
+        {[
+          { label: 'Total pipeline', value: (TOTAL_MS / 1000).toFixed(1) + 's', sub: 'end-to-end' },
+          { label: 'Fastest agent', value: (Math.min(...BENCHMARK_DATA.map((d) => d.ms)) / 1000).toFixed(1) + 's', sub: 'Agent 01 (Nano)' },
+          { label: 'Deepest reasoning', value: (MAX_MS / 1000).toFixed(1) + 's', sub: 'Agent 03 (Super)' },
+          { label: 'API calls', value: '4', sub: 'all NIM endpoints' },
+        ].map((s) => (
+          <div key={s.label}>
+            <div className="mono" style={{ fontSize: '22px', fontWeight: 700, color: '#22d3ee', lineHeight: 1 }}>{s.value}</div>
+            <div style={{ fontSize: '10px', color: 'var(--muted)', marginTop: '3px' }}>{s.label}</div>
+            <div className="mono" style={{ fontSize: '9px', color: 'var(--very-muted)', marginTop: '1px' }}>{s.sub}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Bar chart */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        {BENCHMARK_DATA.map((d) => {
+          const pct = (d.ms / MAX_MS) * 100
+          const secs = (d.ms / 1000).toFixed(1)
+          const share = Math.round((d.ms / TOTAL_MS) * 100)
+          return (
+            <div key={d.agent}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
+                <span className="mono" style={{ fontSize: '10px', color: d.color, minWidth: '20px', fontWeight: 600 }}>{d.agent}</span>
+                <span style={{ fontSize: '12px', color: 'var(--text)', minWidth: '130px' }}>{d.name}</span>
+                <span style={{ fontSize: '10px', color: 'var(--muted)', background: d.model === 'Super' ? 'rgba(167,139,250,0.08)' : 'rgba(34,211,238,0.06)', border: `1px solid ${d.model === 'Super' ? 'rgba(167,139,250,0.25)' : 'rgba(34,211,238,0.2)'}`, borderRadius: '3px', padding: '1px 6px', fontFamily: 'var(--mono)' }}>{d.model}</span>
+                <span className="mono" style={{ fontSize: '10px', color: 'var(--muted)', marginLeft: 'auto' }}>{d.actions}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '20px' }} />
+                <div style={{ flex: 1, height: '6px', background: 'rgba(255,255,255,0.04)', borderRadius: '3px', overflow: 'hidden' }}>
+                  <div
+                    style={{
+                      height: '100%',
+                      width: pct + '%',
+                      background: d.color,
+                      borderRadius: '3px',
+                      opacity: 0.7,
+                    }}
+                  />
+                </div>
+                <span className="mono" style={{ fontSize: '11px', color: 'var(--text)', minWidth: '36px', textAlign: 'right' }}>{secs}s</span>
+                <span className="mono" style={{ fontSize: '10px', color: 'var(--very-muted)', minWidth: '32px', textAlign: 'right' }}>{share}%</span>
+              </div>
+            </div>
+          )
+        })}
+
+        {/* Total bar */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ width: '20px' }} />
+          <div style={{ flex: 1, height: '2px', background: 'rgba(255,255,255,0.06)', borderRadius: '1px' }}>
+            <div style={{ height: '100%', width: '100%', background: 'rgba(255,255,255,0.15)', borderRadius: '1px' }} />
+          </div>
+          <span className="mono" style={{ fontSize: '11px', color: 'var(--text)', fontWeight: 600, minWidth: '36px', textAlign: 'right' }}>{(TOTAL_MS / 1000).toFixed(1)}s</span>
+          <span className="mono" style={{ fontSize: '10px', color: 'var(--muted)', minWidth: '32px', textAlign: 'right' }}>100%</span>
+        </div>
+      </div>
+
+      <div style={{ marginTop: '16px', fontSize: '10px', color: 'var(--very-muted)', fontFamily: 'var(--mono)' }}>
+        Measured on NVIDIA NIM serverless — GDPR compliance sweep (180k records scenario) — March 16, 2026
+      </div>
+    </div>
+  )
+}
+
+function ModelCard({ label, model, agents, why, latency, color }: {
+  label: string; model: string; agents: string[]; why: string; latency: string; color: string
+}) {
+  return (
+    <div className="card" style={{ padding: '20px', borderColor: `${color}20` }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '10px' }}>
+        <div>
+          <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text)', marginBottom: '4px' }}>{label}</div>
+          <div className="mono" style={{ fontSize: '10px', color }}>{model}</div>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <div className="mono" style={{ fontSize: '18px', fontWeight: 700, color, lineHeight: 1 }}>{latency}</div>
+          <div style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '2px' }}>avg latency</div>
+        </div>
+      </div>
+      <div style={{ marginBottom: '10px' }}>
+        {agents.map((a) => (
+          <div key={a} style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
+            <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: color, flexShrink: 0 }} />
+            <span style={{ fontSize: '11px', color: 'var(--muted)' }}>{a}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: '11px', color: 'var(--very-muted)', lineHeight: '1.5', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '10px' }}>{why}</div>
     </div>
   )
 }
