@@ -48,10 +48,10 @@ export default function SystemDiagram() {
         }
         
         .flow-box-01 { animation: flowBrighten 6s ease-in-out 0s infinite; }
-        .flow-box-02 { animation: flowBrighten 6s ease-in-out 0.7s infinite; }
-        .flow-box-03 { animation: flowBrighten 6s ease-in-out 1.4s infinite; }
-        .flow-box-04 { animation: flowBrighten 6s ease-in-out 2.8s infinite; }
-        .flow-box-05 { animation: flowBrightenGreen 6s ease-in-out 3.5s infinite; }
+        .flow-box-02 { animation: flowBrighten 6s ease-in-out 0.6s infinite; }
+        .flow-box-03 { animation: flowBrighten 6s ease-in-out 1.2s infinite; }
+        .flow-box-04 { animation: flowBrighten 6s ease-in-out 2.4s infinite; }
+        .flow-box-05 { animation: flowBrightenGreen 6s ease-in-out 3.0s infinite; }
         
         .flow-arrow {
           stroke-dasharray: 5, 5;
@@ -59,7 +59,7 @@ export default function SystemDiagram() {
         }
         
         .human-review-box {
-          animation: flowBrightenYellow 6s ease-in-out 2.1s infinite;
+          animation: flowBrightenYellow 6s ease-in-out 1.8s infinite;
         }
       `}</style>
       <svg
