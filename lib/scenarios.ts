@@ -2,22 +2,26 @@ export interface Scenario {
   label: string
   task: string
   context: string
+  industry: string
 }
 
 export const scenarios: Scenario[] = [
   {
-    label: 'Sales Pipeline Cleanup',
-    task: 'Review all open deals in the CRM that have had no activity in over 60 days. Archive the stale ones, send a re-engagement email to the account owners, update the deal stages to Stalled, and generate a summary report for the VP of Sales.',
-    context: 'Salesforce CRM with 340 open deals. Email system connected. VP of Sales is Sarah Chen.',
+    label: 'Financial Reconciliation',
+    industry: 'Banking',
+    task: 'Match 847 pending wire transfers from CoreBanking system against customer invoices in NetSuite. Flag discrepancies over $500. Auto-reconcile exact matches. Generate exception report for treasury team by 9 AM.',
+    context: 'Production CoreBanking API, NetSuite ERP read/write access, 847 wires totaling $12.3M, treasury team requires SOC2 audit trail, reconciliation SLA is 2 hours.',
   },
   {
-    label: 'Dependency Modernization',
-    task: 'Scan all package.json files across the monorepo, identify dependencies more than two major versions behind, upgrade them to latest stable versions, run the test suite, and open a pull request with a changelog summary.',
-    context: 'GitHub monorepo with 12 services. CI pipeline connected. Main branch protected.',
+    label: 'Patient Data Migration',
+    industry: 'Healthcare',
+    task: 'Extract 28,000 patient records from legacy Epic EMR system. Validate HIPAA required fields. Transform to FHIR R4 format. Load into new Cerner instance. Verify no data loss. Generate compliance report.',
+    context: 'Epic EMR (decommission date: March 31), Cerner Millennium target system, PHI data class, HIPAA audit required, data integrity critical, migration window: 72 hours.',
   },
   {
-    label: 'GDPR Compliance Sweep',
-    task: 'Identify all customer records where consent was collected before May 2023, send re-consent emails, flag non-responders after 14 days for deletion, and generate a compliance report for the legal team.',
-    context: 'PostgreSQL database with 180,000 customer records. Email system connected. Legal contact is privacy@company.com.',
+    label: 'Contract Approval Workflow',
+    industry: 'Legal Operations',
+    task: 'Review 43 vendor contracts pending in DocuSign. Extract key terms (liability cap, termination clause, payment terms). Flag non-standard terms. Route high-risk contracts to General Counsel. Auto-approve standard agreements under $50K.',
+    context: 'DocuSign API, Salesforce CRM, 43 contracts awaiting signature, legal team capacity: 8 contracts/day, business is blocked on 12 urgent deals, approval SLA: 48 hours.',
   },
 ]
