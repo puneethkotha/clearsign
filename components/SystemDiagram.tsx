@@ -48,10 +48,10 @@ export default function SystemDiagram() {
         }
         
         .flow-box-01 { animation: flowBrighten 6s ease-in-out 0s infinite; }
-        .flow-box-02 { animation: flowBrighten 6s ease-in-out 0.8s infinite; }
-        .flow-box-03 { animation: flowBrighten 6s ease-in-out 1.6s infinite; }
-        .flow-box-04 { animation: flowBrighten 6s ease-in-out 3.2s infinite; }
-        .flow-box-05 { animation: flowBrightenGreen 6s ease-in-out 4s infinite; }
+        .flow-box-02 { animation: flowBrighten 6s ease-in-out 0.7s infinite; }
+        .flow-box-03 { animation: flowBrighten 6s ease-in-out 1.4s infinite; }
+        .flow-box-04 { animation: flowBrighten 6s ease-in-out 2.8s infinite; }
+        .flow-box-05 { animation: flowBrightenGreen 6s ease-in-out 3.5s infinite; }
         
         .flow-arrow {
           stroke-dasharray: 5, 5;
@@ -59,7 +59,7 @@ export default function SystemDiagram() {
         }
         
         .human-review-box {
-          animation: flowBrightenYellow 6s ease-in-out 2.4s infinite;
+          animation: flowBrightenYellow 6s ease-in-out 2.1s infinite;
         }
       `}</style>
       <svg
@@ -225,15 +225,37 @@ export default function SystemDiagram() {
         approve / reject
       </text>
 
-      {/* Arrow: Human review -> Agent 04 */}
+      {/* Arrow: Human review -> Agent 04 (approved) */}
       <line
         x1="920" y1="280" x2="996" y2="280"
         stroke="rgba(34,211,238,0.4)" strokeWidth="1.5"
         markerEnd="url(#arrow)"
         className="flow-arrow"
       />
-      <text x="958" y="265" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="10" fontFamily="ui-monospace,monospace">
+      <text x="958" y="265" textAnchor="middle" fill="rgba(74,222,128,0.6)" fontSize="10" fontFamily="ui-monospace,monospace">
         approved
+      </text>
+      
+      {/* Arrow: Human review -> rejected (downward) */}
+      <line
+        x1="840" y1="325" x2="840" y2="386"
+        stroke="rgba(239,68,68,0.4)" strokeWidth="1.5"
+        markerEnd="url(#arrow)"
+        strokeDasharray="5,5"
+      />
+      <text x="860" y="360" textAnchor="start" fill="rgba(239,68,68,0.6)" fontSize="10" fontFamily="ui-monospace,monospace">
+        rejected
+      </text>
+      
+      {/* Rejected endpoint box */}
+      <rect
+        x="760" y="390" width="160" height="60" rx="4"
+        fill="rgba(239,68,68,0.04)"
+        stroke="rgba(239,68,68,0.4)"
+        strokeWidth="1.5"
+      />
+      <text x="840" y="425" textAnchor="middle" fill="rgba(239,68,68,0.8)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif" fontWeight="500">
+        Task rejected
       </text>
 
       {/* Agent 04 block - in horizontal line */}
