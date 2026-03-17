@@ -4,36 +4,39 @@ export default function SystemDiagram() {
   return (
     <div style={{ position: 'relative' }}>
       <style>{`
-        @keyframes flowGlow {
+        @keyframes flowBrighten {
           0%, 100% { 
-            opacity: 0.4; 
-            filter: drop-shadow(0 0 2px rgba(34, 211, 238, 0.3));
+            stroke: rgba(34, 211, 238, 0.3);
+            stroke-width: 1.5;
           }
-          50% { 
-            opacity: 1; 
-            filter: drop-shadow(0 0 20px rgba(34, 211, 238, 1)) drop-shadow(0 0 40px rgba(34, 211, 238, 0.8));
+          12.5%, 37.5% { 
+            stroke: rgba(34, 211, 238, 1);
+            stroke-width: 2.5;
+            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.8));
           }
         }
         
-        @keyframes flowGlowGreen {
+        @keyframes flowBrightenYellow {
           0%, 100% { 
-            opacity: 0.4; 
-            filter: drop-shadow(0 0 2px rgba(74, 222, 128, 0.3));
+            stroke: rgba(250, 204, 21, 0.4);
+            stroke-width: 1.5;
           }
-          50% { 
-            opacity: 1; 
-            filter: drop-shadow(0 0 20px rgba(74, 222, 128, 1)) drop-shadow(0 0 40px rgba(74, 222, 128, 0.8));
+          12.5%, 37.5% { 
+            stroke: rgba(250, 204, 21, 1);
+            stroke-width: 2.5;
+            filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.8));
           }
         }
         
-        @keyframes flowGlowYellow {
+        @keyframes flowBrightenGreen {
           0%, 100% { 
-            opacity: 0.4; 
-            filter: drop-shadow(0 0 2px rgba(250, 204, 21, 0.3));
+            stroke: rgba(74, 222, 128, 0.4);
+            stroke-width: 1.5;
           }
-          50% { 
-            opacity: 1; 
-            filter: drop-shadow(0 0 20px rgba(250, 204, 21, 1)) drop-shadow(0 0 40px rgba(250, 204, 21, 0.8));
+          12.5%, 37.5% { 
+            stroke: rgba(74, 222, 128, 1);
+            stroke-width: 2.5;
+            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.8));
           }
         }
         
@@ -41,11 +44,11 @@ export default function SystemDiagram() {
           to { stroke-dashoffset: -20; }
         }
         
-        .flow-box-01 { animation: flowGlow 8s ease-in-out 0s infinite; }
-        .flow-box-02 { animation: flowGlow 8s ease-in-out 1s infinite; }
-        .flow-box-03 { animation: flowGlow 8s ease-in-out 2s infinite; }
-        .flow-box-04 { animation: flowGlow 8s ease-in-out 4s infinite; }
-        .flow-box-05 { animation: flowGlowGreen 8s ease-in-out 5s infinite; }
+        .flow-box-01 { animation: flowBrighten 8s ease-in-out 0s infinite; }
+        .flow-box-02 { animation: flowBrighten 8s ease-in-out 1s infinite; }
+        .flow-box-03 { animation: flowBrighten 8s ease-in-out 2s infinite; }
+        .flow-box-04 { animation: flowBrighten 8s ease-in-out 4s infinite; }
+        .flow-box-05 { animation: flowBrightenGreen 8s ease-in-out 5s infinite; }
         
         .flow-arrow {
           stroke-dasharray: 5, 5;
@@ -53,7 +56,7 @@ export default function SystemDiagram() {
         }
         
         .human-review-box {
-          animation: flowGlowYellow 8s ease-in-out 3s infinite;
+          animation: flowBrightenYellow 8s ease-in-out 3s infinite;
         }
       `}</style>
       <svg
