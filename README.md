@@ -7,7 +7,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Built for [NVIDIA Agents for Impact Hackathon](https://rsvp.withgoogle.com/events/agents-for-impact) - March 16, 2026
+Built for [NVIDIA Agents for Impact Hackathon @ SJSU](https://careercenter.sjsu.edu/events/2026/03/16/agents-for-impact-hackathon-at-sjsu/) - March 16, 2026
 
 ---
 
@@ -436,4 +436,4 @@ NYU MS Computer Engineering, 2026
 
 ---
 
-**Built in 2 hours for NVIDIA Agents for Impact Hackathon - March 16, 2026**
+**Built in 2 hours for NVIDIA Agents for Impact Hackathon @ SJSU - March 16, 2026**
