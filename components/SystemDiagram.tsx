@@ -236,27 +236,30 @@ export default function SystemDiagram() {
         approved
       </text>
 
-      {/* Agent 04 block - top right */}
+      {/* Agent 04 block - in horizontal line */}
       <rect
-        x="1000" y="80" width="160" height="90" rx="4"
+        x="1000" y="220" width="160" height="120" rx="4"
         fill="rgba(255,255,255,0.03)"
         stroke="rgba(34,211,238,0.3)"
         strokeWidth="1.5"
         className="flow-box-04"
       />
-      <text x="1080" y="110" textAnchor="middle" fill="#22d3ee" fontSize="13" fontFamily="ui-monospace,monospace" fontWeight="600">
+      <text x="1080" y="250" textAnchor="middle" fill="#22d3ee" fontSize="13" fontFamily="ui-monospace,monospace" fontWeight="600">
         04
       </text>
-      <text x="1080" y="135" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="14" fontFamily="-apple-system,system-ui,sans-serif" fontWeight="500">
+      <text x="1080" y="275" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="14" fontFamily="-apple-system,system-ui,sans-serif" fontWeight="500">
         Audit logger
       </text>
-      <text x="1080" y="155" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">
+      <text x="1080" y="300" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">
         nemotron-nano-9b
+      </text>
+      <text x="1080" y="320" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="10" fontFamily="ui-monospace,monospace">
+        T=0, 1024 tok
       </text>
 
       {/* Arrow: Agent 04 -> Output (downward) */}
       <line
-        x1="1080" y1="170" x2="1080" y2="216"
+        x1="1080" y1="340" x2="1080" y2="386"
         stroke="rgba(34,211,238,0.4)" strokeWidth="1.5"
         markerEnd="url(#arrow)"
         className="flow-arrow"
@@ -264,16 +267,16 @@ export default function SystemDiagram() {
 
       {/* Output block - below audit logger */}
       <rect
-        x="1000" y="220" width="160" height="90" rx="4"
+        x="1000" y="390" width="160" height="90" rx="4"
         fill="rgba(74,222,128,0.04)"
         stroke="rgba(74,222,128,0.4)"
         strokeWidth="1.5"
         className="flow-box-05"
       />
-      <text x="1080" y="260" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="14" fontFamily="-apple-system,system-ui,sans-serif" fontWeight="500">
+      <text x="1080" y="430" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="14" fontFamily="-apple-system,system-ui,sans-serif" fontWeight="500">
         Audit log
       </text>
-      <text x="1080" y="280" textAnchor="middle" fill="rgba(74,222,128,0.7)" fontSize="11" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="1080" y="450" textAnchor="middle" fill="rgba(74,222,128,0.7)" fontSize="11" fontFamily="-apple-system,system-ui,sans-serif">
         timestamped
       </text>
 
