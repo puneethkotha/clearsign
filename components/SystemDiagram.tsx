@@ -90,6 +90,16 @@ export default function SystemDiagram() {
         >
           <path d="M0,0 L6,0 L3,6 z" fill="rgba(34,211,238,0.5)" />
         </marker>
+        <marker
+          id="arrow-red"
+          markerWidth="6"
+          markerHeight="6"
+          refX="3"
+          refY="5"
+          orient="auto"
+        >
+          <path d="M0,0 L6,0 L3,6 z" fill="rgba(239,68,68,0.6)" />
+        </marker>
       </defs>
 
       {/* User Input block - top left */}
@@ -239,8 +249,8 @@ export default function SystemDiagram() {
       {/* Arrow: Human review -> rejected (downward) */}
       <line
         x1="840" y1="325" x2="840" y2="386"
-        stroke="rgba(239,68,68,0.4)" strokeWidth="1.5"
-        markerEnd="url(#arrow)"
+        stroke="rgba(239,68,68,0.6)" strokeWidth="1.5"
+        markerEnd="url(#arrow-red)"
         strokeDasharray="5,5"
       />
       <text x="860" y="360" textAnchor="start" fill="rgba(239,68,68,0.6)" fontSize="10" fontFamily="ui-monospace,monospace">
