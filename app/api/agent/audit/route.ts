@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Manifest, AuditEntry } from '@/lib/types'
 
-const MODEL = 'nvidia/nemotron-nano-9b-v2'
+const MODEL = 'nvidia/nvidia-nemotron-nano-9b-v2'
 const API_BASE = 'https://integrate.api.nvidia.com/v1'
 
 const SYSTEM_PROMPT = `You are an audit documentation agent. You receive an approved action manifest.
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
           { role: 'user', content: userPrompt },
         ],
         temperature: 0,
-        max_tokens: 1024,
+        max_tokens: 2048,
       }),
     })
 
@@ -69,6 +69,7 @@ export async function POST(req: NextRequest) {
     const content = data.choices?.[0]?.message?.content ?? ''
 
     const cleaned = content
+      .replace(/<think>[\s\S]*?<\/think>/gi, '')
       .replace(/```json\s*/gi, '')
       .replace(/```\s*/g, '')
       .trim()

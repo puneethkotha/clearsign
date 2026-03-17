@@ -94,6 +94,7 @@ export async function POST(req: NextRequest) {
     const content = data.choices?.[0]?.message?.content ?? ''
 
     const cleaned = content
+      .replace(/<think>[\s\S]*?<\/think>/gi, '')
       .replace(/```json\s*/gi, '')
       .replace(/```\s*/g, '')
       .trim()

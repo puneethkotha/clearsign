@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ParsedAction } from '@/lib/types'
 
-const MODEL = 'nvidia/nemotron-nano-9b-v2'
+const MODEL = 'nvidia/nvidia-nemotron-nano-9b-v2'
 const API_BASE = 'https://integrate.api.nvidia.com/v1'
 
 const SYSTEM_PROMPT = `You are a precise task decomposition agent. Your only job is to break down a user's task description into a list of discrete, atomic actions. Each action must have exactly one verb and one target. Do not evaluate risk. Do not make recommendations. Only decompose.
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
           { role: 'user', content: userPrompt },
         ],
         temperature: 0,
-        max_tokens: 1024,
+        max_tokens: 2048,
       }),
     })
 
@@ -69,6 +69,7 @@ export async function POST(req: NextRequest) {
 
     // Strip markdown fences if present
     const cleaned = content
+      .replace(/<think>[\s\S]*?<\/think>/gi, '')
       .replace(/```json\s*/gi, '')
       .replace(/```\s*/g, '')
       .trim()
