@@ -27,7 +27,7 @@ The human approves or rejects before anything executes.
 ## Quickstart
 
 ```bash
-git clone https://github.com/yourusername/clearsign
+git clone https://github.com/puneethkotha/clearsign
 cd clearsign
 echo "NVIDIA_API_KEY=your_key_here" > .env.local
 npm install
