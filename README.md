@@ -2,7 +2,7 @@
 
 ## What it solves
 
-The reason enterprises will not deploy AI agents on real workflows is that they have no visibility into what the agent will do before it does it. One wrong autonomous action — a deleted record, a sent email, a modified file — and trust in AI agents collapses permanently. ClearSign is the trust layer that makes agentic AI deployable: a structured action manifest showing every action the agent will take, what data it will touch, what is reversible, and what confidence level each action carries — before anything executes.
+The reason enterprises will not deploy AI agents on real workflows is that they have no visibility into what the agent will do before it does it. One wrong autonomous action - a deleted record, a sent email, a modified file — and trust in AI agents collapses permanently. ClearSign is the trust layer that makes agentic AI deployable: a structured action manifest showing every action the agent will take, what data it will touch, what is reversible, and what confidence level each action carries — before anything executes.
 
 ## How it works
 
@@ -44,4 +44,4 @@ Open http://localhost:3000
 
 ## Built for
 
-NVIDIA "Agents for Impact" Hackathon — March 16, 2026
+NVIDIA "Agents for Impact" Hackathon - March, 2026
