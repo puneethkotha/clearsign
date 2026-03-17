@@ -79,7 +79,7 @@ export default function SystemDiagram() {
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="408" y="208" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="408" y="155" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         ParsedAction[]
       </text>
 
@@ -109,7 +109,7 @@ export default function SystemDiagram() {
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="608" y="208" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="608" y="155" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         RiskAssessment[]
       </text>
 
@@ -139,7 +139,7 @@ export default function SystemDiagram() {
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="808" y="208" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="808" y="155" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         Manifest
       </text>
 
@@ -169,7 +169,7 @@ export default function SystemDiagram() {
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="845" y="345" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="845" y="375" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         approved
       </text>
 
