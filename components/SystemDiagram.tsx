@@ -83,7 +83,7 @@ export default function SystemDiagram() {
         ParsedAction[]
       </text>
 
-      {/* Agent 02 block — cyan border (powerful model) */}
+      {/* Agent 02 block - cyan border (powerful model) */}
       <rect
         x="380" y="160" width="140" height="100" rx="4"
         fill="rgba(34,211,238,0.04)"
@@ -113,7 +113,7 @@ export default function SystemDiagram() {
         RiskAssessment[]
       </text>
 
-      {/* Agent 03 block — cyan border */}
+      {/* Agent 03 block - cyan border */}
       <rect
         x="560" y="160" width="140" height="100" rx="4"
         fill="rgba(34,211,238,0.04)"
@@ -143,7 +143,7 @@ export default function SystemDiagram() {
         Manifest
       </text>
 
-      {/* Human review block — yellow border */}
+      {/* Human review block - yellow border */}
       <rect
         x="740" y="160" width="120" height="80" rx="4"
         fill="rgba(250,204,21,0.04)"
@@ -200,7 +200,7 @@ export default function SystemDiagram() {
         markerEnd="url(#arrow)"
       />
 
-      {/* Output block — green border */}
+      {/* Output block - green border */}
       <rect
         x="740" y="300" width="120" height="80" rx="4"
         fill="rgba(74,222,128,0.04)"

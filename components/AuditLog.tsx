@@ -41,7 +41,7 @@ export default function AuditLog({ entries }: AuditLogProps) {
           </div>
           {firstTs && lastTs && (
             <div className="mono" style={{ fontSize: '10px', color: 'var(--muted)' }}>
-              {firstTs} — {lastTs}
+              {firstTs} - {lastTs}
             </div>
           )}
         </div>

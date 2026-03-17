@@ -201,7 +201,7 @@ export default function AgentStep({
             )}
             {riskCounts && (
               <div style={{ fontSize: '11px', color: 'var(--muted)' }}>
-                Risk assessed —{' '}
+                Risk assessed -{' '}
                 {riskCounts.high > 0 && (
                   <span style={{ color: '#f87171' }}>{riskCounts.high} high</span>
                 )}
@@ -217,7 +217,7 @@ export default function AgentStep({
             )}
             {summaryData.manifest && (
               <div style={{ fontSize: '11px', color: 'var(--muted)' }}>
-                Manifest ready —{' '}
+                Manifest ready -{' '}
                 <span style={{ color: 'var(--text)' }}>{summaryData.manifest.totalActions} actions</span>
                 {summaryData.manifest.irreversibleCount > 0 && (
                   <span>
@@ -231,7 +231,7 @@ export default function AgentStep({
             )}
             {summaryData.auditCount !== undefined && (
               <div style={{ fontSize: '11px', color: 'var(--muted)' }}>
-                Audit log generated —{' '}
+                Audit log generated -{' '}
                 <span style={{ color: '#4ade80' }}>{summaryData.auditCount} entries</span>
               </div>
             )}

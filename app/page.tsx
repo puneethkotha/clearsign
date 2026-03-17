@@ -915,7 +915,7 @@ function ArchitectureView() {
             ClearSign solution
           </div>
           <p style={{ fontSize: '16px', color: 'var(--text)', lineHeight: '1.75', marginBottom: '28px', maxWidth: '800px' }}>
-            A four-agent Nemotron pipeline that generates a structured manifest showing exactly what an AI agent will do—which data it touches, what's reversible, confidence levels per action—before anything executes. Human approves or rejects. If approved, a tamper-evident audit log is generated.
+            A four-agent Nemotron pipeline that generates a structured manifest showing exactly what an AI agent will do - which data it touches, what's reversible, confidence levels per action - before anything executes. Human approves or rejects. If approved, a tamper-evident audit log is generated.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}>
             {[
@@ -949,7 +949,7 @@ function ArchitectureView() {
           <SystemDiagram />
         </div>
         <div style={{ marginTop: '16px', fontSize: '12px', color: 'var(--muted)', lineHeight: '1.7', maxWidth: '720px' }}>
-          Four specialized agents orchestrated in sequence. Fast models (Nano) for structured tasks, powerful models (Super) for deep reasoning. Stateless—no database required. Every API call is independently auditable.
+          Four specialized agents orchestrated in sequence. Fast models (Nano) for structured tasks, powerful models (Super) for deep reasoning. Stateless - no database required. Every API call is independently auditable.
         </div>
       </div>
 
@@ -967,17 +967,17 @@ function ArchitectureView() {
         <div className="label" style={{ marginBottom: '24px' }}>Why two Nemotron models</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <ModelCard
-            label="Nano — speed tier"
+            label="Nano - speed tier"
             model="nvidia/nvidia-nemotron-nano-9b-v2"
-            agents={['Agent 01 — Intent Parser', 'Agent 04 — Audit Logger']}
+            agents={['Agent 01 - Intent Parser', 'Agent 04 - Audit Logger']}
             why="Structured decomposition and log generation. Tasks that need speed and consistent JSON output, not deep reasoning."
             latency="~7.4s"
             color="#22d3ee"
           />
           <ModelCard
-            label="Super — reasoning tier"
+            label="Super - reasoning tier"
             model="nvidia/llama-3.3-nemotron-super-49b-v1.5"
-            agents={['Agent 02 — Risk Reasoner', 'Agent 03 — Manifest Builder']}
+            agents={['Agent 02 - Risk Reasoner', 'Agent 03 - Manifest Builder']}
             why="Risk analysis and plain-language generation. Tasks requiring chain-of-thought reasoning over ambiguous consequences."
             latency="~16.8s"
             color="#a78bfa"
