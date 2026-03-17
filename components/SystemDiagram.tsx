@@ -198,6 +198,9 @@ export default function SystemDiagram() {
         stroke="rgba(34,211,238,0.4)" strokeWidth="1.5"
         className="flow-arrow"
       />
+      <text x="920" y="315" textAnchor="start" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+        approved
+      </text>
       {/* Left to Agent 04 */}
       <line
         x1="900" y1="360" x2="789" y2="360"
@@ -205,9 +208,6 @@ export default function SystemDiagram() {
         markerEnd="url(#arrow)"
         className="flow-arrow"
       />
-      <text x="845" y="375" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
-        approved
-      </text>
 
       {/* Agent 04 block */}
       <rect
