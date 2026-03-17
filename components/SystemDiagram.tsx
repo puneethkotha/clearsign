@@ -5,8 +5,36 @@ export default function SystemDiagram() {
     <div style={{ position: 'relative' }}>
       <style>{`
         @keyframes flowGlow {
-          0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 0px rgba(34, 211, 238, 0)); }
-          50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.6)); }
+          0%, 100% { 
+            opacity: 0.4; 
+            filter: drop-shadow(0 0 2px rgba(34, 211, 238, 0.3));
+          }
+          50% { 
+            opacity: 1; 
+            filter: drop-shadow(0 0 20px rgba(34, 211, 238, 1)) drop-shadow(0 0 40px rgba(34, 211, 238, 0.8));
+          }
+        }
+        
+        @keyframes flowGlowGreen {
+          0%, 100% { 
+            opacity: 0.4; 
+            filter: drop-shadow(0 0 2px rgba(74, 222, 128, 0.3));
+          }
+          50% { 
+            opacity: 1; 
+            filter: drop-shadow(0 0 20px rgba(74, 222, 128, 1)) drop-shadow(0 0 40px rgba(74, 222, 128, 0.8));
+          }
+        }
+        
+        @keyframes flowGlowYellow {
+          0%, 100% { 
+            opacity: 0.4; 
+            filter: drop-shadow(0 0 2px rgba(250, 204, 21, 0.3));
+          }
+          50% { 
+            opacity: 1; 
+            filter: drop-shadow(0 0 20px rgba(250, 204, 21, 1)) drop-shadow(0 0 40px rgba(250, 204, 21, 0.8));
+          }
         }
         
         @keyframes dashFlow {
@@ -17,7 +45,7 @@ export default function SystemDiagram() {
         .flow-box-02 { animation: flowGlow 8s ease-in-out 1s infinite; }
         .flow-box-03 { animation: flowGlow 8s ease-in-out 2s infinite; }
         .flow-box-04 { animation: flowGlow 8s ease-in-out 4s infinite; }
-        .flow-box-05 { animation: flowGlow 8s ease-in-out 5s infinite; }
+        .flow-box-05 { animation: flowGlowGreen 8s ease-in-out 5s infinite; }
         
         .flow-arrow {
           stroke-dasharray: 5, 5;
@@ -25,7 +53,7 @@ export default function SystemDiagram() {
         }
         
         .human-review-box {
-          animation: flowGlow 8s ease-in-out 3s infinite;
+          animation: flowGlowYellow 8s ease-in-out 3s infinite;
         }
       `}</style>
       <svg
