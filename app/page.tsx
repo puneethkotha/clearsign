@@ -229,7 +229,7 @@ export default function Home() {
           >
             ClearSign
           </div>
-          <div style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '1px' }}>
+          <div style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '1px', fontFamily: 'var(--mono)' }}>
             Agent trust layer
           </div>
         </div>
