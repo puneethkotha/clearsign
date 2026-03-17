@@ -4,7 +4,7 @@ export default function SystemDiagram() {
   return (
     <svg
       width="100%"
-      viewBox="0 0 900 420"
+      viewBox="0 0 1100 450"
       style={{ display: 'block', background: 'transparent' }}
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -34,193 +34,193 @@ export default function SystemDiagram() {
 
       {/* User Input block */}
       <rect
-        x="30" y="160" width="120" height="80" rx="4"
+        x="50" y="180" width="130" height="85" rx="4"
         fill="rgba(255,255,255,0.03)"
         stroke="rgba(255,255,255,0.1)"
         strokeWidth="1"
       />
-      <text x="90" y="196" textAnchor="middle" fill="rgba(228,228,231,0.8)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="115" y="218" textAnchor="middle" fill="rgba(228,228,231,0.8)" fontSize="13" fontFamily="-apple-system,system-ui,sans-serif">
         Task input
       </text>
-      <text x="90" y="214" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
+      <text x="115" y="238" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
         task + context
       </text>
 
       {/* Arrow: User -> Agent 01 */}
       <line
-        x1="150" y1="200" x2="196" y2="200"
+        x1="180" y1="222" x2="231" y2="222"
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
 
       {/* Agent 01 block */}
       <rect
-        x="200" y="160" width="140" height="100" rx="4"
+        x="235" y="170" width="150" height="105" rx="4"
         fill="rgba(255,255,255,0.03)"
         stroke="rgba(255,255,255,0.1)"
         strokeWidth="1"
       />
-      <text x="270" y="183" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace,monospace" fontWeight="600">
+      <text x="310" y="195" textAnchor="middle" fill="#22d3ee" fontSize="12" fontFamily="ui-monospace,monospace" fontWeight="600">
         01
       </text>
-      <text x="270" y="203" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="310" y="217" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="13" fontFamily="-apple-system,system-ui,sans-serif">
         Intent parser
       </text>
-      <text x="270" y="222" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
+      <text x="310" y="238" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
         nemotron-nano-9b
       </text>
-      <text x="270" y="240" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="310" y="257" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
         T=0, 1024 tok
       </text>
 
       {/* Arrow: 01 -> 02 */}
       <line
-        x1="340" y1="200" x2="376" y2="200"
+        x1="385" y1="222" x2="431" y2="222"
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="358" y="188" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="408" y="208" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         ParsedAction[]
       </text>
 
       {/* Agent 02 block - cyan border (powerful model) */}
       <rect
-        x="380" y="160" width="140" height="100" rx="4"
+        x="435" y="170" width="150" height="105" rx="4"
         fill="rgba(34,211,238,0.04)"
         stroke="rgba(34,211,238,0.3)"
         strokeWidth="1"
       />
-      <text x="450" y="183" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace,monospace" fontWeight="600">
+      <text x="510" y="195" textAnchor="middle" fill="#22d3ee" fontSize="12" fontFamily="ui-monospace,monospace" fontWeight="600">
         02
       </text>
-      <text x="450" y="203" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="510" y="217" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="13" fontFamily="-apple-system,system-ui,sans-serif">
         Risk reasoner
       </text>
-      <text x="450" y="222" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
+      <text x="510" y="238" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
         nemotron-super-49b
       </text>
-      <text x="450" y="240" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="510" y="257" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
         T=0.1, 2048 tok
       </text>
 
       {/* Arrow: 02 -> 03 */}
       <line
-        x1="520" y1="200" x2="556" y2="200"
+        x1="585" y1="222" x2="631" y2="222"
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="538" y="188" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="608" y="208" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         RiskAssessment[]
       </text>
 
       {/* Agent 03 block - cyan border */}
       <rect
-        x="560" y="160" width="140" height="100" rx="4"
+        x="635" y="170" width="150" height="105" rx="4"
         fill="rgba(34,211,238,0.04)"
         stroke="rgba(34,211,238,0.3)"
         strokeWidth="1"
       />
-      <text x="630" y="183" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace,monospace" fontWeight="600">
+      <text x="710" y="195" textAnchor="middle" fill="#22d3ee" fontSize="12" fontFamily="ui-monospace,monospace" fontWeight="600">
         03
       </text>
-      <text x="630" y="203" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="710" y="217" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="13" fontFamily="-apple-system,system-ui,sans-serif">
         Manifest builder
       </text>
-      <text x="630" y="222" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
+      <text x="710" y="238" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
         nemotron-super-49b
       </text>
-      <text x="630" y="240" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="710" y="257" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
         T=0, 2048 tok
       </text>
 
       {/* Arrow: 03 -> Human review */}
       <line
-        x1="700" y1="200" x2="736" y2="200"
+        x1="785" y1="222" x2="831" y2="222"
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="718" y="188" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="808" y="208" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         Manifest
       </text>
 
       {/* Human review block - yellow border */}
       <rect
-        x="740" y="160" width="120" height="80" rx="4"
+        x="835" y="180" width="130" height="85" rx="4"
         fill="rgba(250,204,21,0.04)"
         stroke="rgba(250,204,21,0.4)"
         strokeWidth="1"
       />
-      <text x="800" y="196" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="900" y="218" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="13" fontFamily="-apple-system,system-ui,sans-serif">
         Human review
       </text>
-      <text x="800" y="214" textAnchor="middle" fill="rgba(250,204,21,0.7)" fontSize="10" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="900" y="238" textAnchor="middle" fill="rgba(250,204,21,0.7)" fontSize="10" fontFamily="-apple-system,system-ui,sans-serif">
         approve / reject
       </text>
 
       {/* Arrow: Human review -> down to Agent 04 area */}
       {/* Down from human block */}
       <line
-        x1="800" y1="240" x2="800" y2="340"
+        x1="900" y1="265" x2="900" y2="360"
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
       />
       {/* Left to Agent 04 */}
       <line
-        x1="800" y1="340" x2="704" y2="340"
+        x1="900" y1="360" x2="789" y2="360"
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
-      <text x="752" y="328" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="845" y="345" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="9" fontFamily="ui-monospace,monospace">
         approved
       </text>
 
       {/* Agent 04 block */}
       <rect
-        x="560" y="300" width="140" height="80" rx="4"
+        x="635" y="320" width="150" height="85" rx="4"
         fill="rgba(255,255,255,0.03)"
         stroke="rgba(255,255,255,0.1)"
         strokeWidth="1"
       />
-      <text x="630" y="320" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace,monospace" fontWeight="600">
+      <text x="710" y="343" textAnchor="middle" fill="#22d3ee" fontSize="12" fontFamily="ui-monospace,monospace" fontWeight="600">
         04
       </text>
-      <text x="630" y="340" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="710" y="365" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="13" fontFamily="-apple-system,system-ui,sans-serif">
         Audit logger
       </text>
-      <text x="630" y="358" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
+      <text x="710" y="384" textAnchor="middle" fill="rgba(113,113,122,0.8)" fontSize="10" fontFamily="ui-monospace,monospace">
         nemotron-nano-9b
       </text>
-      <text x="630" y="372" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
+      <text x="710" y="398" textAnchor="middle" fill="rgba(113,113,122,0.5)" fontSize="9" fontFamily="ui-monospace,monospace">
         T=0, 1024 tok
       </text>
 
       {/* Arrow: Agent 04 -> Output */}
       <line
-        x1="700" y1="340" x2="736" y2="340"
+        x1="785" y1="360" x2="831" y2="360"
         stroke="rgba(255,255,255,0.2)" strokeWidth="1"
         markerEnd="url(#arrow)"
       />
 
       {/* Output block - green border */}
       <rect
-        x="740" y="300" width="120" height="80" rx="4"
+        x="835" y="320" width="130" height="85" rx="4"
         fill="rgba(74,222,128,0.04)"
         stroke="rgba(74,222,128,0.4)"
         strokeWidth="1"
       />
-      <text x="800" y="336" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="12" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="900" y="358" textAnchor="middle" fill="rgba(228,228,231,0.9)" fontSize="13" fontFamily="-apple-system,system-ui,sans-serif">
         Audit log
       </text>
-      <text x="800" y="354" textAnchor="middle" fill="rgba(74,222,128,0.7)" fontSize="10" fontFamily="-apple-system,system-ui,sans-serif">
+      <text x="900" y="378" textAnchor="middle" fill="rgba(74,222,128,0.7)" fontSize="10" fontFamily="-apple-system,system-ui,sans-serif">
         timestamped
       </text>
 
       {/* Legend */}
-      <rect x="30" y="360" width="8" height="8" rx="1" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" strokeWidth="1" />
-      <text x="44" y="369" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-super-49b (deep reasoning)</text>
-      <rect x="220" y="360" width="8" height="8" rx="1" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-      <text x="234" y="369" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-nano-9b (speed)</text>
-      <rect x="380" y="360" width="8" height="8" rx="1" fill="rgba(250,204,21,0.04)" stroke="rgba(250,204,21,0.4)" strokeWidth="1" />
-      <text x="394" y="369" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">human in the loop</text>
+      <rect x="50" y="420" width="8" height="8" rx="1" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" strokeWidth="1" />
+      <text x="64" y="429" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-super-49b (deep reasoning)</text>
+      <rect x="280" y="420" width="8" height="8" rx="1" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+      <text x="294" y="429" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-nano-9b (speed)</text>
+      <rect x="480" y="420" width="8" height="8" rx="1" fill="rgba(250,204,21,0.04)" stroke="rgba(250,204,21,0.4)" strokeWidth="1" />
+      <text x="494" y="429" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">human in the loop</text>
     </svg>
   )
 }
