@@ -5,11 +5,12 @@ export default function SystemDiagram() {
     <div style={{ position: 'relative' }}>
       <style>{`
         @keyframes flowBrighten {
-          0%, 100% { 
+          0%, 15%, 100% { 
             stroke: rgba(34, 211, 238, 0.3);
             stroke-width: 1.5;
+            filter: none;
           }
-          12.5%, 37.5% { 
+          5%, 10% { 
             stroke: rgba(34, 211, 238, 1);
             stroke-width: 2.5;
             filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.8));
@@ -17,11 +18,12 @@ export default function SystemDiagram() {
         }
         
         @keyframes flowBrightenYellow {
-          0%, 100% { 
+          0%, 15%, 100% { 
             stroke: rgba(250, 204, 21, 0.4);
             stroke-width: 1.5;
+            filter: none;
           }
-          12.5%, 37.5% { 
+          5%, 10% { 
             stroke: rgba(250, 204, 21, 1);
             stroke-width: 2.5;
             filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.8));
@@ -29,11 +31,12 @@ export default function SystemDiagram() {
         }
         
         @keyframes flowBrightenGreen {
-          0%, 100% { 
+          0%, 15%, 100% { 
             stroke: rgba(74, 222, 128, 0.4);
             stroke-width: 1.5;
+            filter: none;
           }
-          12.5%, 37.5% { 
+          5%, 10% { 
             stroke: rgba(74, 222, 128, 1);
             stroke-width: 2.5;
             filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.8));
@@ -44,11 +47,11 @@ export default function SystemDiagram() {
           to { stroke-dashoffset: -20; }
         }
         
-        .flow-box-01 { animation: flowBrighten 8s ease-in-out 0s infinite; }
-        .flow-box-02 { animation: flowBrighten 8s ease-in-out 1s infinite; }
-        .flow-box-03 { animation: flowBrighten 8s ease-in-out 2s infinite; }
-        .flow-box-04 { animation: flowBrighten 8s ease-in-out 4s infinite; }
-        .flow-box-05 { animation: flowBrightenGreen 8s ease-in-out 5s infinite; }
+        .flow-box-01 { animation: flowBrighten 6s ease-in-out 0s infinite; }
+        .flow-box-02 { animation: flowBrighten 6s ease-in-out 0.8s infinite; }
+        .flow-box-03 { animation: flowBrighten 6s ease-in-out 1.6s infinite; }
+        .flow-box-04 { animation: flowBrighten 6s ease-in-out 3.2s infinite; }
+        .flow-box-05 { animation: flowBrightenGreen 6s ease-in-out 4s infinite; }
         
         .flow-arrow {
           stroke-dasharray: 5, 5;
@@ -56,7 +59,7 @@ export default function SystemDiagram() {
         }
         
         .human-review-box {
-          animation: flowBrightenYellow 8s ease-in-out 3s infinite;
+          animation: flowBrightenYellow 6s ease-in-out 2.4s infinite;
         }
       `}</style>
       <svg
