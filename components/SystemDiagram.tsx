@@ -280,21 +280,21 @@ export default function SystemDiagram() {
         timestamped
       </text>
 
-      {/* Legend - top right with container */}
-      <rect x="1000" y="20" width="160" height="95" rx="6" 
+      {/* Legend - far top right with container */}
+      <rect x="900" y="20" width="280" height="95" rx="6" 
         fill="rgba(0,0,0,0.3)" 
         stroke="rgba(255,255,255,0.1)" 
         strokeWidth="1" 
       />
       
-      <rect x="1015" y="38" width="12" height="12" rx="2" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.5)" strokeWidth="1" />
-      <text x="1033" y="48" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">super-49b</text>
+      <rect x="915" y="38" width="12" height="12" rx="2" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.5)" strokeWidth="1" />
+      <text x="933" y="48" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">nemotron-super-49b (deep reasoning)</text>
       
-      <rect x="1015" y="62" width="12" height="12" rx="2" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-      <text x="1033" y="72" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">nano-9b</text>
+      <rect x="915" y="62" width="12" height="12" rx="2" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <text x="933" y="72" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">nemotron-nano-9b (speed)</text>
       
-      <rect x="1015" y="86" width="12" height="12" rx="2" fill="rgba(250,204,21,0.05)" stroke="rgba(250,204,21,0.5)" strokeWidth="1" />
-      <text x="1033" y="96" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">human</text>
+      <rect x="915" y="86" width="12" height="12" rx="2" fill="rgba(250,204,21,0.05)" stroke="rgba(250,204,21,0.5)" strokeWidth="1" />
+      <text x="933" y="96" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">human in the loop</text>
     </svg>
     </div>
   )
