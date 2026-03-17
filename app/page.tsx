@@ -956,7 +956,7 @@ function ArchitectureView() {
             ClearSign solution
           </div>
           <p style={{ fontSize: '16px', color: 'var(--text)', lineHeight: '1.75', marginBottom: '28px', maxWidth: '800px' }}>
-            A four-agent Nemotron pipeline that generates a structured manifest showing exactly what an AI agent will do - which data it touches, what's reversible, confidence levels per action - before anything executes. Human approves or rejects. If approved, a tamper-evident audit log is generated.
+            Four Nemotron agents generate a structured manifest showing exactly what an AI agent will do: which data it touches, what's reversible, and confidence per action. Human reviews and approves. Then a tamper-evident audit log is generated.
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' }}>
             {[
