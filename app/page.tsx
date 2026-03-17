@@ -926,9 +926,9 @@ function ArchitectureView() {
           <h1 style={{ fontSize: '36px', fontWeight: 700, color: 'var(--text)', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: '1.1' }}>
             The enterprise trust layer<br/>for AI agents
           </h1>
-          <p style={{ fontSize: '17px', color: 'rgba(228,228,231,0.7)', lineHeight: '1.7', maxWidth: '680px' }}>
-            Before ClearSign, enterprises couldn't deploy AI agents on production workflows because they had no way to verify what actions would execute before they happened.
-          </p>
+        <p style={{ fontSize: '17px', color: 'rgba(228,228,231,0.7)', lineHeight: '1.7', maxWidth: '680px' }}>
+          Most enterprises avoid deploying autonomous AI agents in production because they can't verify what actions will execute before they happen. One wrong action and trust is gone.
+        </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', marginBottom: '48px' }}>
