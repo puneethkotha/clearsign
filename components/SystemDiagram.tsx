@@ -287,15 +287,21 @@ export default function SystemDiagram() {
         timestamped
       </text>
 
-      {/* Legend - top right */}
-      <rect x="670" y="40" width="10" height="10" rx="1" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" strokeWidth="1" />
-      <text x="686" y="50" fill="rgba(113,113,122,0.7)" fontSize="10" fontFamily="ui-monospace,monospace">nemotron-super-49b (deep reasoning)</text>
+      {/* Legend - top right with container */}
+      <rect x="900" y="20" width="280" height="95" rx="6" 
+        fill="rgba(0,0,0,0.3)" 
+        stroke="rgba(255,255,255,0.1)" 
+        strokeWidth="1" 
+      />
       
-      <rect x="670" y="62" width="10" height="10" rx="1" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-      <text x="686" y="72" fill="rgba(113,113,122,0.7)" fontSize="10" fontFamily="ui-monospace,monospace">nemotron-nano-9b (speed)</text>
+      <rect x="915" y="38" width="12" height="12" rx="2" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.5)" strokeWidth="1" />
+      <text x="933" y="48" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">nemotron-super-49b (deep reasoning)</text>
       
-      <rect x="670" y="84" width="10" height="10" rx="1" fill="rgba(250,204,21,0.04)" stroke="rgba(250,204,21,0.4)" strokeWidth="1" />
-      <text x="686" y="94" fill="rgba(113,113,122,0.7)" fontSize="10" fontFamily="ui-monospace,monospace">human in the loop</text>
+      <rect x="915" y="62" width="12" height="12" rx="2" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <text x="933" y="72" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">nemotron-nano-9b (speed)</text>
+      
+      <rect x="915" y="86" width="12" height="12" rx="2" fill="rgba(250,204,21,0.05)" stroke="rgba(250,204,21,0.5)" strokeWidth="1" />
+      <text x="933" y="96" fill="rgba(228,228,231,0.8)" fontSize="11" fontFamily="ui-monospace,monospace">human in the loop</text>
     </svg>
     </div>
   )
