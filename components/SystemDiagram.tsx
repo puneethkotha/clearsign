@@ -253,13 +253,15 @@ export default function SystemDiagram() {
         timestamped
       </text>
 
-      {/* Legend */}
-      <rect x="50" y="420" width="8" height="8" rx="1" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" strokeWidth="1" />
-      <text x="64" y="429" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-super-49b (deep reasoning)</text>
-      <rect x="280" y="420" width="8" height="8" rx="1" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-      <text x="294" y="429" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-nano-9b (speed)</text>
-      <rect x="480" y="420" width="8" height="8" rx="1" fill="rgba(250,204,21,0.04)" stroke="rgba(250,204,21,0.4)" strokeWidth="1" />
-      <text x="494" y="429" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">human in the loop</text>
+      {/* Legend - top right */}
+      <rect x="640" y="30" width="8" height="8" rx="1" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" strokeWidth="1" />
+      <text x="654" y="39" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-super-49b (deep reasoning)</text>
+      
+      <rect x="640" y="50" width="8" height="8" rx="1" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+      <text x="654" y="59" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">nemotron-nano-9b (speed)</text>
+      
+      <rect x="640" y="70" width="8" height="8" rx="1" fill="rgba(250,204,21,0.04)" stroke="rgba(250,204,21,0.4)" strokeWidth="1" />
+      <text x="654" y="79" fill="rgba(113,113,122,0.7)" fontSize="9" fontFamily="ui-monospace,monospace">human in the loop</text>
     </svg>
     </div>
   )
