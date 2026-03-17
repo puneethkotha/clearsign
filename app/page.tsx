@@ -702,6 +702,47 @@ export default function Home() {
                         </div>
                       )}
 
+                      {/* Low confidence warning */}
+                      {manifest.items.some(item => item.confidence < 0.70) && (
+                        <div
+                          style={{
+                            padding: '12px 16px',
+                            background: 'rgba(251,146,60,0.05)',
+                            border: '1px solid rgba(251,146,60,0.25)',
+                            borderRadius: '4px',
+                            marginBottom: '16px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                          }}
+                        >
+                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+                            <path
+                              d="M9 2L16 15H2L9 2Z"
+                              stroke="#fb923c"
+                              strokeWidth="1.5"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M9 6.5V10.5"
+                              stroke="#fb923c"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            />
+                            <circle cx="9" cy="13" r="0.8" fill="#fb923c" />
+                          </svg>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontSize: '12px', color: '#fb923c', fontWeight: 600, marginBottom: '2px' }}>
+                              Low confidence detected
+                            </div>
+                            <div style={{ fontSize: '11px', color: 'var(--muted)', lineHeight: '1.5' }}>
+                              {manifest.items.filter(item => item.confidence < 0.70).length} action(s) have confidence below 70%. 
+                              Model uncertainty may indicate ambiguity in the task or missing context. Review these actions carefully before approval.
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                       {/* Action cards */}
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {manifest.items.map((item) => (
