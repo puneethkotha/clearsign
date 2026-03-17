@@ -249,11 +249,10 @@ export default function SystemDiagram() {
       {/* Arrow: Human review -> rejected (downward) */}
       <line
         x1="840" y1="325" x2="840" y2="386"
-        stroke="rgba(239,68,68,0.6)" strokeWidth="1.5"
+        stroke="rgba(239,68,68,0.7)" strokeWidth="2"
         markerEnd="url(#arrow-red)"
-        strokeDasharray="5,5"
       />
-      <text x="860" y="360" textAnchor="start" fill="rgba(239,68,68,0.6)" fontSize="10" fontFamily="ui-monospace,monospace">
+      <text x="860" y="360" textAnchor="start" fill="rgba(239,68,68,0.7)" fontSize="10" fontFamily="ui-monospace,monospace">
         rejected
       </text>
       
